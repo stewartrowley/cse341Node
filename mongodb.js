@@ -17,8 +17,7 @@ const getdb = () => {
 }
 
 // async function main() {
-//     // const uri = `mongodb+srv://row16006:Tr_weve+@cluster0.qosznbg.mongodb.net/test`
-//     await client.connect();
+
 
 //     try {
 //         await client.connect();
