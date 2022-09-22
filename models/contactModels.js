@@ -40,18 +40,15 @@ const createContacts = async () => {
 createContacts();
 
 const manyContacts = async (req, res, next) => {
-  const result = await mongodb
+  let result = await mongodb
     .getdb()
     .db("nodePract")
     .collection("contacts")
     .find();
   result.toArray().then((item) => {
 
-    console.log(item)
-    // res.status(200).json(item)
-    
-    // res.setHeader('Content-Type', 'application/json');
-    // res.status(200).json(lists);
+    res.setHeader('Content-Type', 'application/json');
+    res.status(200).json(item);
   });
 
 }

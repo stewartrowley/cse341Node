@@ -6,7 +6,7 @@
 const dotenv = require("dotenv")
 const {MongoClient} = require('mongodb')
 dotenv.config()
-const uri = `mongodb+srv://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}@cluster0.qosznbg.mongodb.net/test`
+const uri = process.env.MONGO_URL
 const client = new MongoClient(uri)
 
 const getdb = () => {
