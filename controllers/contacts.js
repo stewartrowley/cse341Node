@@ -7,9 +7,9 @@ const findAllContacts = async (req, res, next) => {
     .db('nodePract')
     .collection('contacts')
     .find();
-  result.toArray().then((lists) => {
+  result.toArray().then((items) => {
     res.setHeader('Content-Type', 'application/json');
-    res.status(200).json(lists);
+    res.status(200).json(items);
   });
 };
 
@@ -20,9 +20,9 @@ const findContact = async (req, res, next) => {
     .db('nodePract')
     .collection('contacts')
     .find({ _id: userId });
-  result.toArray().then((lists) => {
+  result.toArray().then((items) => {
     res.setHeader('Content-Type', 'application/json');
-    res.status(200).json(lists[0]);
+    res.status(200).json(items[0]);
   });
 };
 
