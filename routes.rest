@@ -1,5 +1,11 @@
 ###
 GET https://stewartcse341node.onrender.com/contacts
 ###
-GET http://localhost:8080/contacts
+###
+GET https://stewartcse341node.onrender.com/contacts/632f72f614362e2dee554288
+###
+GET http://localhost:3000/contacts
+###
+###
+GET http://localhost:3000/contacts/632f72f614362e2dee554288
 ###
