@@ -1,12 +1,11 @@
+const express = require('express');
+const router = express.Router();
 
-const app = require('express').Router();
-const contacts = require("./../models/contactModels");
+const contactsController = require('../controllers/contacts');
 
-console.log(contacts.manyContacts());
-app.post("/", contacts.createContacts);
-app.get("/", contacts.manyContacts);
+router.get('/', contactsController.findAllContacts);
 
+router.get('/:id', contactsController.findContact);
 
+module.exports = router;
 
-
-module.exports = app;
