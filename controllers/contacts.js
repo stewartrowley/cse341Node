@@ -35,17 +35,17 @@ const createContacts = async (req, res) => {
       birthday: req.body.birthday,
    };
 
-   const response = await mongodb
+   const result = await mongodb
       .getDb()
       .db('nodePract')
       .collection('contacts')
       .insertOne(contacts);
 
-   if (response.acknowledged) {
-      res.status(201).json(response);
+   if (result.acknowledged) {
+      res.status(201).json(result);
    } else {
       res.status(500).json(
-         response.error || 'Some error occurred while creating the contact.'
+         result.error || 'Some error occurred while creating the contact.'
       );
    }
 };
@@ -61,16 +61,16 @@ const updateContacts = async (req, res, next) => {
       birthday: req.body.birthday,
    };
 
-   const response = await mongodb
+   const result = await mongodb
       .getDb()
       .db('nodePract')
       .collection('contacts')
       .replaceOne({ _id: userId }, updateContact );
 
-   if (response.modifiedCount > 0) {
+   if (result.modifiedCount > 0) {
       res.status(204).send();
    } else {
-      res.status(500).json(response.error || 'Some error occured while updating the contact information.')
+      res.status(500).json(result.error || 'Some error occured while updating the contact information.')
    }
 };
 
@@ -79,18 +79,16 @@ const deleteContact = async (req, res, next) => {
 
    console.log(userId)
 
-   const response = await mongodb
+   const result = await mongodb
       .getDb()
       .db('nodePract')
       .collection('contacts')
       .deleteOne({ _id: userId }, true);
 
-   console.log(response)
-
-   if(response.deletedCount > 0) {
-      res.status(204).send();
+   if(result.deletedCount > 0) {
+      res.status(200).send();
    } else {
-      res.status(500).json(response.error || 'Some error occured while deleting the contact information.')
+      res.status(500).json(result.error || 'Some error occured while deleting the contact information.')
    }
 };
 
